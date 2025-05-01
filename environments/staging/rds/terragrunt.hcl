@@ -25,19 +25,18 @@
   private_subnets      = dependency.vpc.outputs.private_subnet_ids
   create_prod_instance = true
   rds = {
-    instance_class                  = "db.m5.large"
+    instance_class                  = "db.t4g.micro"
     engine                          = "mysql"
     engine_version                  = "8.0.35"
-    username                        = "esX4rde5ert"
-    allocated_storage               = "200"
-    max_allocated_storage           = "500"
+    username                        = "esX4rde5ertf"
+    allocated_storage               = "20"
+    max_allocated_storage           = "50"
     backup_retention_period         = "2"
     publicly_accessible             = false
     multi_az                        = false
     skip_final_snapshot             = true
     enabled_cloudwatch_logs_exports = ["error", "slowquery"]
-    deletion_protection             = true
-    #  iops                                      = 500
+    deletion_protection             = false
     storage_encrypted                 = true
     storage_type                      = "gp3"
     enable_auto_minor_version_upgrade = true
@@ -45,7 +44,7 @@
     performance_insights_enabled      = true
     copy_tags_to_snapshot             = true
     monitoring_interval               = 60
-    email_sns_endpoint                = ["rogers@devopx.com", "aws@devopx.com", "help@devopx.com"]
+    email_sns_endpoint                = ["rogers@devopx.com", "aws@devopx.com"]
     db_custom_param = [
       {
         name         = "character_set_client"

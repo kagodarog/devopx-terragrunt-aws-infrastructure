@@ -22,7 +22,7 @@ dependency "data" {
 inputs = {
   cf_pages_project_name = "v2-sync-demo-devopx"
   cf_pages_prod_branch  = "develop"
-  account_id            = "eff14902be3be1888a16e62c99b34283"
+  account_id            = lookup(dependency.data.outputs.aws_secretsmanager_secret_version, "CLOUDFLARE_ACCOUNT_ID", "xxxxxxxXXXXXxxxxXXX")
   custom_domain         = "v2.sync-demo-staging.devopx.com"
   cloudflare_api_token  = lookup(dependency.data.outputs.aws_secretsmanager_secret_version, "CLOUDFLARE_API_TOKEN", "xxxxxxxXXXXXxxxxXXX")
 }
